@@ -2,6 +2,7 @@ import './App.css';
 import Home from "./components/Home";
 import Header from './components/Header';
 import { Route,Routes } from "react-router-dom";
+import Signin from './components/Signin';
 function App() {
   return (
     <div >
@@ -14,9 +15,11 @@ function App() {
           <h4 className=''>Hyderabad Metro</h4>
         </div>
       </div>
+      */}
       <Routes>
         <Route path="/Home" element={<Home/>}/>
-  </Routes>*/}
+        <Route path="/Signin" element={<Signin/>}/>
+      </Routes>
     </div>
   );
 }
