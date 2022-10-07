@@ -14,7 +14,7 @@ function Header() {
         <Navbar.Brand href="#home">
           <img
             src="https://www.ltmetro.com/wp-content/uploads/2020/06/sticky_logo-1-1-1.png"
-            width="280"
+            width="225"
             height="90"
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
