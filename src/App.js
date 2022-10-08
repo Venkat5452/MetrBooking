@@ -1,11 +1,15 @@
 import './App.css';
-import Home from "./components/Home";
+import { Container,Row,Col } from 'react-bootstrap';
 import Header from './components/Header';
-import { Route,Routes } from "react-router-dom";
-import Signin from './components/Signin';
+import { Route ,Routes } from "react-router-dom";
+import {UserAuthContextProvider} from './Context/UserAuthContext'
+import Login from './components/Login';
+import Signup from './components/Signup';
+import Loggedin from './components/Loggedin';
+import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
-    <div >
+    <Container>
       <Header />
       {/*className='container-fluid p-3' <div className='d-flex bg-secondary'>
        <div className='ml-auto' >
@@ -16,11 +20,18 @@ function App() {
         </div>
       </div>
       */}
-      <Routes>
-        <Route path="/Home" element={<Home/>}/>
-        <Route path="/Signin" element={<Signin/>}/>
-      </Routes>
-    </div>
+      <Row>
+        <Col>
+        <UserAuthContextProvider>
+          <Routes>
+            <Route path="/Login" element={<Login/>}/>
+            <Route path='/Signup' element={<Signup/>}/>
+            <Route path='/Loggedin' element={<ProtectedRoute><Loggedin/></ProtectedRoute>}/>
+          </Routes>
+        </UserAuthContextProvider> 
+        </Col>
+      </Row>
+    </Container>
   );
 }
 

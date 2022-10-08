@@ -8,7 +8,7 @@ function Header() {
     <div>
     <Navbar bg="dark" expand="lg">
       <Container className="text-primary">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="Home">
           <img
             src="https://www.ltmetro.com/wp-content/uploads/2020/06/sticky_logo-1-1-1.png"
             width="200"
@@ -20,8 +20,8 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link style={{ color: "white" }} href="/Home">Home</Nav.Link>
-            <Nav.Link style={{ color: "white" }} href="/Home">About</Nav.Link>
-            <Nav.Link style={{ color: "white" }} href="/Signin">Sign In</Nav.Link>
+            <Nav.Link style={{ color: "white" }} href="/about">About</Nav.Link>
+            <Nav.Link style={{ color: "white" }} href="/Login">Sign In</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
