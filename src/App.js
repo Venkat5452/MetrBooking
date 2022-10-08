@@ -7,6 +7,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Loggedin from './components/Loggedin';
 import ProtectedRoute from './components/ProtectedRoute';
+import PhoneSignUp from './components/PhoneSignUp';
 function App() {
   return (
     <Container>
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/Login" element={<Login/>}/>
             <Route path='/Signup' element={<Signup/>}/>
+            <Route path='/PhoneSignUp' element={<PhoneSignUp/>}/>
             <Route path='/Loggedin' element={<ProtectedRoute><Loggedin/></ProtectedRoute>}/>
           </Routes>
         </UserAuthContextProvider> 
