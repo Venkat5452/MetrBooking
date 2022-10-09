@@ -3,6 +3,7 @@ import { Container,Row,Col } from 'react-bootstrap';
 import Header from './components/Header';
 import { Route ,Routes } from "react-router-dom";
 import {UserAuthContextProvider} from './Context/UserAuthContext'
+import Home from './components/Home';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Loggedin from './components/Loggedin';
@@ -25,6 +26,7 @@ function App() {
         <Col>
         <UserAuthContextProvider>
           <Routes>
+            <Route path="/" element={<Home/>}/>
             <Route path="/Login" element={<Login/>}/>
             <Route path='/Signup' element={<Signup/>}/>
             <Route path='/PhoneSignUp' element={<PhoneSignUp/>}/>
