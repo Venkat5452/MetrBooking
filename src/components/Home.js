@@ -8,7 +8,7 @@ const images = [
 
 function Home() {
     return(
-        <div>
+        <div className="container-fluid">
             <SimpleImageSlider
                 width={896}
                 height={504}
@@ -16,7 +16,7 @@ function Home() {
                 showBullets={true}
                 showNavs={true}
             />
-            <h1 className="text-center mt-5">Metro Network Map</h1>
+            <h1 className="text-center mt-5 container-fluid">Metro Network Map</h1>
             <hr
                 style={{
                     background: 'black',

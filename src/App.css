@@ -7,14 +7,7 @@ a {
   text-decoration: none;
 }
 
-body {
-  background-color: #fafafa;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 100vh;
-  align-items: center;
-}
+
 
 .box {
   border: 1px solid #dfdfdf;

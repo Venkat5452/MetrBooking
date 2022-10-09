@@ -1,0 +1,8 @@
+.pp {
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 70vh;
+    align-items: center;
+  }

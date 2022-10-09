@@ -24,6 +24,7 @@ const Signup = () => {
 
   return (
     <>
+    <div  className="pp">
       <div className="p-4 box">
         <h2 className="mb-3">Firebase Auth Signup</h2>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -50,9 +51,10 @@ const Signup = () => {
             </Button>
           </div>
         </Form>
-      </div>
-      <div className="p-4 box mt-3 text-center">
+        <div className="p-4 box mt-3 text-center">
         Already have an account? <Link to="/Login">Log In</Link>
+        </div>
+      </div>
       </div>
     </>
   );

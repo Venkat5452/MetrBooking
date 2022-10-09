@@ -45,6 +45,7 @@ function PhoneSignUp() {
     }
   return (
     <>
+    <div className="pp">
       <div className="p-4 box">
         <h2 className="mb-3">Firebase Phone Authentication</h2>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -82,6 +83,7 @@ function PhoneSignUp() {
           </div>
           </Form>
           </div>
+        </div>  
         </>
   )
 }

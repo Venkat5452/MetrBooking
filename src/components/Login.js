@@ -4,7 +4,7 @@ import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import GoogleButton from "react-google-button";
 import { useUserAuth } from "../Context/UserAuthContext";
-
+import './Login.css';
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,6 +35,7 @@ const Login = () => {
 
   return (
     <>
+    <div className="pp">
       <div className="p-4 box">
         <h2 className="mb-3">Firebase Auth Login</h2>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -76,10 +77,11 @@ const Login = () => {
             </Button>
           </div>
           </Link>
-      </div>
-      <div className="p-4 box mt-3 text-center">
+          <div className="p-4 box text-center">
         Don't have an account? <Link to="/Signup">Sign up</Link>
+      </div>  
       </div>
+    </div>  
     </>
   );
 };
