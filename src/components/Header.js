@@ -5,7 +5,7 @@ import './Header.css';
 function Header() {
   return (
     <div>
-    <Navbar bg="dark" expand="lg">
+      <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark" sticky="top">
       <Container className="text-primary">
         <Navbar.Brand href="Home">
           <img
@@ -15,8 +15,8 @@ function Header() {
             className="d-inline-block align-top"
             alt="React Bootstrap logo"
           /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbar-toggler" />
+          <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link style={{ color: "white" }} href="/">Home</Nav.Link>
             <Nav.Link style={{ color: "white" }} href="/about">About</Nav.Link>

@@ -70,16 +70,16 @@ const Login = () => {
             onClick={handleGoogleSignIn}
           />
         </div>
-        <Link to='/PhoneSignUp'>
+          <Link to='/PhoneSignUp' className="text-success">
         <div className="d-grid gap-2 mt-4">
             <Button variant="success" type="Submit">
               Sign In With Phone
             </Button>
           </div>
           </Link>
-          <div className="p-4 box text-center">
-        Don't have an account? <Link to="/Signup">Sign up</Link>
-      </div>  
+          <div className="p-3 box text-center mt-3">
+            Don't have an account? <Link to="/Signup">Sign up</Link>
+          </div> 
       </div>
     </div>  
     </>

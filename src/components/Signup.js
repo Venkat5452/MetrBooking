@@ -51,9 +51,9 @@ const Signup = () => {
             </Button>
           </div>
         </Form>
-        <div className="p-4 box mt-3 text-center">
-        Already have an account? <Link to="/Login">Log In</Link>
-        </div>
+          <div className="p-3 box mt-3 text-center">
+            Already have an account? <Link to="/Login">Log In</Link>
+          </div>
       </div>
       </div>
     </>

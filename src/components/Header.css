@@ -1,4 +1,7 @@
-.UL {
-    color: aquamarine;
-    
+.navbar.navbar-toggler[aria-expanded="true"] {
+    color: white !important;
+}
+
+.navbar .navbar-toggler:focus {
+    color: white;
 }

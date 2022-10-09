@@ -9,6 +9,7 @@ import Signup from './components/Signup';
 import Loggedin from './components/Loggedin';
 import ProtectedRoute from './components/ProtectedRoute';
 import PhoneSignUp from './components/PhoneSignUp';
+import Footer from './components/Footer';
 function App() {
   return (
     <Container>
@@ -35,6 +36,7 @@ function App() {
         </UserAuthContextProvider> 
         </Col>
       </Row>
+      <Footer />
     </Container>
   );
 }
