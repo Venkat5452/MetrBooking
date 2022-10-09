@@ -1,46 +1,54 @@
-import SimpleImageSlider from "react-simple-image-slider";
-
-const images = [
-    { url: "https://www.ltmetro.com/wp-content/uploads/2020/06/Hyderabad-Metro-Rail-Honourable-Prime-Minister-Narendra-Modi-Flags-off-on-28th-November-2017-2.jpg" },
-    { url: "https://www.ltmetro.com/wp-content/uploads/2018/10/EvolutionofaMetroStation-StageEight.jpg" },
-    { url: "https://www.ltmetro.com/wp-content/uploads/2021/02/1612516346320.jpg" }
-];
+import React, { useState } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
 
 function Home() {
-    return(
-        <div className="container-fluid">
-            <SimpleImageSlider
-                width={896}
-                height={504}
-                images={images}
-                showBullets={true}
-                showNavs={true}
-            />
-            <h1 className="text-center mt-5 container-fluid">Metro Network Map</h1>
-            <hr
-                style={{
-                    background: 'black',
-                    color: 'black',
-                    borderColor: 'black',
-                    height: '2px',
-                    display: 'flex',
-                    flexDirection: 'row',
-                    alignItems: 'center'
-                }}
-            />
+    const [index, setIndex] = useState(0);
 
-            <img
-                src="https://www.ltmetro.com/wp-content/uploads/2021/03/Network-Map-small-min.jpg"
-                width={600}
-                height={340}
-                display="flex"
-                flexDirection="row"
-                alignItems="center"
-                alt="new"
-            />
+    const handleSelect = (selectedIndex, e) => {
+        setIndex(selectedIndex);
+    };
 
-        </div>
-    )
+    return (
+        <Carousel activeIndex={index} onSelect={handleSelect}>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src="https://www.ltmetro.com/wp-content/uploads/2020/06/Hyderabad-Metro-Rail-Honourable-Prime-Minister-Narendra-Modi-Flags-off-on-28th-November-2017-2.jpg"
+                    alt="First slide"
+                />
+                <Carousel.Caption>
+                    <h3>First slide label</h3>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src="https://www.ltmetro.com/wp-content/uploads/2018/10/EvolutionofaMetroStation-StageEight.jpg"
+                    alt="Second slide"
+                />
+
+                <Carousel.Caption>
+                    <h3>Second slide label</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </Carousel.Caption>
+            </Carousel.Item>
+            <Carousel.Item>
+                <img
+                    className="d-block w-100"
+                    src="https://www.ltmetro.com/wp-content/uploads/2021/02/1612516346320.jpg"
+                    alt="Third slide"
+                />
+
+                <Carousel.Caption>
+                    <h3>Third slide label</h3>
+                    <p>
+                        Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+                    </p>
+                </Carousel.Caption>
+            </Carousel.Item>
+        </Carousel>
+    );
 }
 
 export default Home;
