@@ -47,9 +47,9 @@ function PhoneSignUp() {
     <>
     <div className="pp">
       <div className="p-4 box">
-        <h2 className="mb-3">Firebase Phone Authentication</h2>
         {error && <Alert variant="danger">{error}</Alert>}
         <Form onSubmit={getOtp} style={{display : !flag ? "block" : "none"}}>
+        <h2 className="mb-3">Phone Authentication</h2>
           <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
             <PhoneInput
             defaultCountry="IN"
@@ -68,6 +68,7 @@ function PhoneSignUp() {
           </Form>
 
           <Form onSubmit={verifyOtp} style={{display : flag ? "block" : "none"}}>
+          <h2 className="mb-3">Phone OTP Verification</h2>
           <Form.Group className="mb-3" controlId="formBasicOtp">
             <Form.Control
                 type="otp"
@@ -79,7 +80,7 @@ function PhoneSignUp() {
             <Link to="/PhoneSignUp">
              <Button variant="secondary">Cancel</Button>
              </Link>
-             <Button variant="primary" type="submit">Verify Otp</Button>
+             <Button variant="success" type="submit">Verify Otp</Button>
           </div>
           </Form>
           </div>
