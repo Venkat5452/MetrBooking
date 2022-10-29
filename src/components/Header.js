@@ -7,7 +7,7 @@ function Header() {
     <div>
       <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark" sticky="top">
       <Container className="text-primary">
-        <Navbar.Brand href="Home">
+        <Navbar.Brand href="/">
           <img
             src="https://www.ltmetro.com/wp-content/uploads/2020/06/sticky_logo-1-1-1.png"
             width="200"
