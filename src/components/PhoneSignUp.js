@@ -33,8 +33,10 @@ function PhoneSignUp() {
 
     const verifyOtp= async(e)=>{
         e.preventDefault();
-        if(otp==="" || otp===null) 
+        if(otp==="" || otp===null) {
+           setError("Enter Valid Otp"); 
           return ;
+        }
         try {
             setError("");
            await confirmObj.confirm(otp);
@@ -77,7 +79,7 @@ function PhoneSignUp() {
             />
           </Form.Group>
           <div className="button-right gap-2">
-            <Link to="/PhoneSignUp">
+            <Link to="/Login">
              <Button variant="secondary">Cancel</Button>
              </Link>
              <Button variant="success" type="submit">Verify Otp</Button>
