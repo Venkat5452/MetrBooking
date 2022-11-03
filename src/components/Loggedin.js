@@ -30,13 +30,21 @@ function Loggedin() {
       }
       else {
         const date = new Date();
-        const day= `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+        var dd=date.getDay();
+        var mm=date.getMonth();
+        if(dd<10) {
+          dd="0"+dd;
+        }
+        if(mm<10) {
+          mm="0"+mm;
+        }
+        const day= `${dd}/${mm+1}/${date.getFullYear()}`;
         const showTime = date.getHours()+':'+ date.getMinutes()+":" + date.getSeconds();
         const curr=valFrom+"/"+valTo +"/"+ day +"/" + showTime;
         //setQr(curr);
         setError("Happy Journey!!");
         const res=await toDataURL(curr);
-        console.log(res);
+        console.log(curr);
         setIMG(res);
       }
     }
@@ -51,17 +59,17 @@ function Loggedin() {
         {error==="Invalid Input" && <Alert variant="danger">{error}</Alert>}
         {/* {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error}</Alert>} */}
          <div className='box p-3 d-flex'>
-        <select class="form-select" aria-label="Default select example" onChange={(e) => setValFrom(e.target.value)}>
+        <select className="form-select" aria-label="Default select example" onChange={(e) => setValFrom(e.target.value)}>
          <option selected value="">From</option>
-         <option value="2">Ameerpet</option>
-         <option value="1">Raidurg</option>
-         <option value="3">Rasoolpura</option>
-         <option value="4">Parade Ground</option>
-         <option value="5">Tarnaka</option>
-         <option value="6">Nagole</option>
-         <option value="7">Miyapur</option>
-         <option value="8">Kukatpally</option>
-         <option value="9">Nampally</option>
+         <option value="02">Ameerpet</option>
+         <option value="01">Raidurg</option>
+         <option value="03">Rasoolpura</option>
+         <option value="04">Parade Ground</option>
+         <option value="05">Tarnaka</option>
+         <option value="06">Nagole</option>
+         <option value="07">Miyapur</option>
+         <option value="08">Kukatpally</option>
+         <option value="09">Nampally</option>
          <option value="10">MGBS</option>
          <option value="11">L.B.Nagar</option>
          <option value="12">JBS Parade Ground</option>
@@ -69,17 +77,17 @@ function Loggedin() {
        </select>
       </div> 
       <div className='box p-3 d-flex'>
-        <select class="form-select" aria-label="Default select example" onChange={(e) => setValTo(e.target.value)}>
+        <select className="form-select" aria-label="Default select example" onChange={(e) => setValTo(e.target.value)}>
          <option selected value="">To</option>
-         <option value="2">Ameerpet</option>
-         <option value="1">Raidurg</option>
-         <option value="3">Rasoolpura</option>
-         <option value="4">Parade Ground</option>
-         <option value="5">Tarnaka</option>
-         <option value="6">Nagole</option>
-         <option value="7">Miyapur</option>
-         <option value="8">Kukatpally</option>
-         <option value="9">Nampally</option>
+         <option value="02">Ameerpet</option>
+         <option value="01">Raidurg</option>
+         <option value="03">Rasoolpura</option>
+         <option value="04">Parade Ground</option>
+         <option value="05">Tarnaka</option>
+         <option value="06">Nagole</option>
+         <option value="07">Miyapur</option>
+         <option value="08">Kukatpally</option>
+         <option value="09">Nampally</option>
          <option value="10">MGBS</option>
          <option value="11">L.B.Nagar</option>
          <option value="12">JBS Parade Ground</option>
@@ -95,7 +103,7 @@ function Loggedin() {
             <div><h4 className='pt-3'>Download Your Ticket</h4></div>
             {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error} Valid till 11:45pm</Alert>} 
             <div><img src={img1} alt="qr"></img></div>
-            <div className='p-3'><a href={img1} download="qr.png"><Button variant="success" type="submit" >Download</Button></a></div>
+            <div className='p-3'><a href={img1} download= "qr.png"><Button variant="success" type="submit" >Download</Button></a></div>
           </div>
           
         )

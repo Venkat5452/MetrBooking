@@ -16,3 +16,12 @@
   .b1 {
     padding-left: 110px;
   }
+
+  .pp2{
+    background-color: #fafafa;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 50vh;
+    align-items: center;
+  }

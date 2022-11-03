@@ -11,6 +11,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import PhoneSignUp from './components/PhoneSignUp';
 import Footer from './components/Footer';
 import About from './components/About';
+import Destitest from './components/Destitest';
+import Boardtest from './components/Boardtest';
 function App() {
   return (
     <Container>
@@ -32,6 +34,8 @@ function App() {
             <Route path="/Login" element={<Login/>}/>
             <Route path='/Signup' element={<Signup/>}/>
             <Route path='/About' element={<About/>}/>
+            <Route path='/Destitest' element={<Destitest/>}/>
+            <Route path='/Boardtest' element={<Boardtest/>}/>
             <Route path='/PhoneSignUp' element={<PhoneSignUp/>}/>
             <Route path='/Loggedin' element={<ProtectedRoute><Loggedin/></ProtectedRoute>}/>
           </Routes>
