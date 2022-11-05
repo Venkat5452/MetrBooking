@@ -5,6 +5,10 @@ import { useUserAuth } from "../Context/UserAuthContext";
 import { useState } from 'react';
 import { Alert } from "react-bootstrap";
 import { toDataURL } from 'qrcode';
+import jsPDF from 'jspdf';
+import hydemetro from '../images/img2.png'
+
+//import { Document, Page, pdfjs } from "react-pdf";
 function Loggedin() {
     const { logOut, user } = useUserAuth();
     const [valTo, setValTo] = useState("");
@@ -12,6 +16,8 @@ function Loggedin() {
     const [error, setError] = useState("");
     const navigate = useNavigate();
     const [img1, setIMG]=useState("");
+    const Stations = [
+      "Raidurg", "Ameerpet", "Rasoolpura", "Parade Ground","Tarnaka","Nagole","Miyapur","Kukatpally","Nampally","MGBS","L.B.Nagar","JBS Parade Ground","Gandhi Hospital"];
     const handleLogout = async () => {
      // setQr("");
       try {
@@ -47,6 +53,39 @@ function Loggedin() {
         console.log(curr);
         setIMG(res);
       }
+    }
+    const pdfGenerate=()=>{
+      const date = new Date();
+        var dd=date.getDay();
+        var mm=date.getMonth();
+        if(dd<10) {
+          dd="0"+dd;
+        }
+        if(mm<10) {
+          mm="0"+mm;
+        }
+        const day= `${dd}/${mm+1}/${date.getFullYear()}`;
+         var doc=new jsPDF('landscape','px','a5','false');
+         doc.addImage(hydemetro,'PNG',10,10,70,70);
+         doc.setTextColor("Blue");
+         doc.setFontSize(24);
+         doc.text(145,20,"Hyderabad Metro Ticket");
+         doc.setFontSize(12);
+         doc.setTextColor("Black");
+         doc.text(120,45,"Station From");
+         doc.text(195,45,"--");
+         doc.text(210,45,Stations[valFrom - 1]);
+         doc.text(120,75,"Station To");
+         doc.text(195,75,"--");
+         doc.text(210,75,Stations[valTo - 1]);
+         doc.text(120,105,"Valid Till");
+         doc.text(195,105,"--");
+         doc.text(210,105,day + " ,11:45 pm ");
+         doc.addImage(img1,'PNG',160,115,125,125);
+         doc.setTextColor("Green");
+         doc.setFontSize(25);
+         doc.text(165,275,"Happy Journey");
+         doc.save('QR.pdf');
     }
     return (
       <>
@@ -101,11 +140,11 @@ function Loggedin() {
         img1 && (
           <div className='text-center'>
             <div><h4 className='pt-3'>Download Your Ticket</h4></div>
-            {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error} Valid till 11:45pm</Alert>} 
+            {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error}</Alert>} 
             <div><img src={img1} alt="qr"></img></div>
-            <div className='p-3'><a href={img1} download= "qr.png"><Button variant="success" type="submit" >Download</Button></a></div>
+            <div className='p-3'><Button variant="success" onClick={pdfGenerate}  type="submit" >Download</Button></div>
           </div>
-          
+          //<a href={img1}   download= "qr.pdf"></a>
         )
       }
       </div> 

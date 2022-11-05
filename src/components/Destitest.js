@@ -1,22 +1,43 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import QrScanner from 'qr-scanner'; 
+import QrReader from 'react-qr-scanner'
 import { Alert } from "react-bootstrap";
 
 function Destitest() {
   const [stationid,setStationid] = useState(0);
-  const [IMG,setIMG]=useState("");
+  const [flag,setflag]=useState(false);
   const [data,setdata]=useState("");
   const handleSubmit=async(e)=>{
-    setdata("")
+    setdata("");
+    //console.log(stationid);
+    if(stationid!==0 && stationid!=="00") {
+      setflag(true);
+    }
+    else {
+      setdata("Invalid");
+      setflag(false);
+    }
+    //console.log(stationid);
     e.preventDefault();
-   // console.log(IMG);
+   
+  }
+  const handleErrorWebcam=(error)=>{
+    setdata(error);
+    console.log(error);
+  }
+  const handleScanWebcam=(myresult)=>{
     try {
-      const res=await QrScanner.scanImage(IMG);
+      if(myresult) {
+      //console.log(myresult);
+      //setdata(myresult.text);
+      const res=myresult.text;
       //console.log(res);
-    const id=res.substring(3,5);
-    const d=res.substring(6,16);
+      //console.log(res);
+      const id=res.substring(3,5);
+      const d=res.substring(6,16);
+      //console.log(id);
+      //console.log(stationid);
       //console.log(d);
       const date = new Date();
         var dd=date.getDay();
@@ -28,9 +49,8 @@ function Destitest() {
           mm="0"+mm;
         }
         const day= `${dd}/${mm+1}/${date.getFullYear()}`;
-    //console.log(id);
-    // console.log(stationid);
-    if((id)===stationid && d===day) {
+        console.log(day);
+    if((id)===stationid && day===d) {
       // console.log("Accepted");
       setdata("Accepted")
     }
@@ -38,25 +58,29 @@ function Destitest() {
       // console.log("Not Accepted");
       setdata("Not Accepted")
     }
-    }catch(err) {
-       setdata(err);
+    setflag(false);
+    setStationid("00");
     }
+   }catch(err) {
+       setdata(err);
+   }
   }
   return (
     <>
     <div>
       <div className="p-2 box text-center text-primary">
          <h2>Destination Verification</h2>
-         {(data==="Not Accepted" || data==="No QR code found") && <Alert variant="danger">{data}</Alert>}
-         {data==="Accepted" && <Alert variant="success">{data}</Alert>} 
+         {(data && data!=="Accepted") && <Alert variant="danger">{data}</Alert>}
+         {data && data==="Accepted" && <Alert variant="success">{data}</Alert>} 
       </div> 
-    <div className='pp2 box'>
+    {!flag && <div className='pp2 box'>
     <Form onSubmit={handleSubmit}>
       <div>
         <h5 className='text-primary'>Select Station</h5>
       </div>
     <select class="form-select" aria-label="Default select example" className="mb-3 border-primary" onChange={(e) => setStationid(e.target.value)}>
-         <option selected value="01">Raidurg</option>
+         <option value="00">To</option>
+         <option value="01">Raidurg</option>
          <option value="02">Ameerpet</option>
          <option value="03">Rasoolpura</option>
          <option value="04">Parade Ground</option>
@@ -70,13 +94,6 @@ function Destitest() {
          <option value="12">JBS Parade Ground</option>
          <option value="13">Gandhi Hospital</option>
        </select>
-      <div className='mb-3'>
-      <input type="file" accept='.png ,.jpg,.jpeg'
-      required
-      className='' 
-      onChange={(e)=>{setIMG(e.target.files[0])}}
-      />
-      </div>
       <Form.Group className="mb-3">
         <Form.Check
           required
@@ -86,8 +103,23 @@ function Destitest() {
         />
       </Form.Group>
       <Button type="submit">Check</Button>
+      {/* <QrReader
+        delay={200}
+        style={{width:"150px"}}
+        onError={handleErrorWebcam}
+        onScan={handleScanWebcam}
+      /> */}
     </Form>
-    </div>
+    </div> }
+    { flag && <div className='pp1 box text-center'>
+       <QrReader
+        delay={10}
+        style={{maxWidth:"275px",maxHeight:"350px"}}
+       className='pp1 box'
+        onError={handleErrorWebcam}
+        onScan={handleScanWebcam}
+      />
+    </div>}
     </div>
     </>
   );
