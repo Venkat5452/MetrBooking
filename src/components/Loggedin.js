@@ -6,7 +6,8 @@ import { useState } from 'react';
 import { Alert } from "react-bootstrap";
 import { toDataURL } from 'qrcode';
 import jsPDF from 'jspdf';
-import hydemetro from '../images/img2.png'
+import hydemetro from '../images/img2.png';
+import moment from 'moment/moment';
 
 //import { Document, Page, pdfjs } from "react-pdf";
 function Loggedin() {
@@ -36,35 +37,42 @@ function Loggedin() {
       }
       else {
         const date = new Date();
-        var dd=date.getDay();
-        var mm=date.getMonth();
-        if(dd<10) {
-          dd="0"+dd;
-        }
-        if(mm<10) {
-          mm="0"+mm;
-        }
-        const day= `${dd}/${mm+1}/${date.getFullYear()}`;
+        //var dd=date.getDay();
+        var date1 = moment();
+        var currentDate = date1.format('DD/MM/YYYY');
+        console.log(currentDate);
+        // var mm=date.getMonth();
+        // if(dd<10) {
+        //   dd="0"+dd;
+        // }
+        // if(mm<10) {
+        //   mm="0"+mm;
+        // }
+        //const day= `${dd}/${mm+1}/${date.getFullYear()}`;
         const showTime = date.getHours()+':'+ date.getMinutes()+":" + date.getSeconds();
-        const curr=valFrom+"/"+valTo +"/"+ day +"/" + showTime;
+        const curr=valFrom+"/"+valTo +"/"+ currentDate +"/" + showTime;
         //setQr(curr);
         setError("Happy Journey!!");
         const res=await toDataURL(curr);
-        console.log(curr);
+        //console.log(curr);
         setIMG(res);
       }
     }
     const pdfGenerate=()=>{
-      const date = new Date();
-        var dd=date.getDay();
-        var mm=date.getMonth();
-        if(dd<10) {
-          dd="0"+dd;
-        }
-        if(mm<10) {
-          mm="0"+mm;
-        }
-        const day= `${dd}/${mm+1}/${date.getFullYear()}`;
+      //const date = new Date();
+        //var dd=date.getDay();
+        //var mm=date.getMonth();
+        var date1 = moment();
+        var currentDate = date1.format('DD/MM/YYYY');
+        console.log(currentDate);
+        // if(dd<10) {
+        //   dd="0"+dd;
+        // }
+        // if(mm<10) {
+        //   mm="0"+mm;
+        // }
+        // console.log(dd);
+        //const day= `${dd}/${mm+1}/${date.getFullYear()}`;
          var doc=new jsPDF('landscape','px','a5','false');
          doc.addImage(hydemetro,'PNG',10,10,70,70);
          doc.setTextColor("Blue");
@@ -80,7 +88,7 @@ function Loggedin() {
          doc.text(210,75,Stations[valTo - 1]);
          doc.text(120,105,"Valid Till");
          doc.text(195,105,"--");
-         doc.text(210,105,day + " ,11:45 pm ");
+         doc.text(210,105,currentDate + " ,11:45 pm ");
          doc.addImage(img1,'PNG',160,115,125,125);
          doc.setTextColor("Green");
          doc.setFontSize(25);

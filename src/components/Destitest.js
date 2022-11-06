@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import QrReader from 'react-qr-scanner'
 import { Alert } from "react-bootstrap";
-
+import moment from 'moment/moment';
 function Destitest() {
   const [stationid,setStationid] = useState(0);
   const [flag,setflag]=useState(false);
@@ -39,18 +39,21 @@ function Destitest() {
       //console.log(id);
       //console.log(stationid);
       //console.log(d);
-      const date = new Date();
-        var dd=date.getDay();
-        var mm=date.getMonth();
-        if(dd<10) {
-          dd="0"+dd;
-        }
-        if(mm<10) {
-          mm="0"+mm;
-        }
-        const day= `${dd}/${mm+1}/${date.getFullYear()}`;
-        console.log(day);
-    if((id)===stationid && day===d) {
+      // const date = new Date();
+      //   var dd=date.getDay();
+      //   var mm=date.getMonth();
+      //   if(dd<10) {
+      //     dd="0"+dd;
+      //   }
+      //   if(mm<10) {
+      //     mm="0"+mm;
+      //   }
+      //   const day= `${dd}/${mm+1}/${date.getFullYear()}`;
+      //   console.log(day);
+      var date1 = moment();
+        var currentDate = date1.format('DD/MM/YYYY');
+        console.log(currentDate);
+    if((id)===stationid && currentDate===d) {
       // console.log("Accepted");
       setdata("Accepted")
     }
