@@ -8,7 +8,8 @@ import { toDataURL } from 'qrcode';
 import jsPDF from 'jspdf';
 import hydemetro from '../images/img2.png';
 import moment from 'moment/moment';
-import displayrazorpay from '../utils/paymentgateway';
+import img2 from '../images/img2.png'
+//import displayrazorpay from '../utils/paymentgateway';
 
 
 //import { Document, Page, pdfjs } from "react-pdf";
@@ -39,8 +40,30 @@ function Loggedin() {
         setError("Invalid Input");
       }
       else {
-        const data=await displayrazorpay(setpay,user);
-        console.log(data);
+        var options= {
+          key:"rzp_test_Rg7Lgz7NgVAUCu",
+          key_secret:"x0e5GSKDeyVrNQcr0gJ7pOmP",
+          amount:1*100,
+          currency:"INR",
+          name:"Hyderabad Metro",
+          image:img2,
+          description:"For ticket booking transactions",
+          handler:function(response) {
+            setpay(true);
+          },
+          prefill :{
+            email:user.email
+          },
+          notes :{
+             address:"Hyderabad metro Office"
+          },
+          theme :{
+            color:"blue"
+          }
+        };
+        //console.log(data);
+        var pay1=new window.Razorpay(options);
+        pay1.open();
         setError("Payment Successfull"); 
       }
       console.log(pay);
