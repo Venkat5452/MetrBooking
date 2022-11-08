@@ -5,3 +5,12 @@
     margin: auto;
  
 }
+.zoom {
+    transition: transform .1s;
+  }
+  
+  .zoom:hover {
+    -ms-transform: scale(1.25); /* IE 9 */
+    -webkit-transform: scale(1.25); /* Safari 3-8 */
+    transform: scale(1.25); 
+  }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './Home.css';
+import mapimg from '../images/HYD-MAP.jpg'
 
 function Home() {
     const [index, setIndex] = useState(0);
@@ -10,6 +11,7 @@ function Home() {
     };
 
     return (
+        <>
         <Carousel activeIndex={index} onSelect={handleSelect}>
             <Carousel.Item>
                 <img
@@ -47,6 +49,15 @@ function Home() {
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
+        <div className='p-2 text-center'>
+           <h2 className='pt-3 text-primary'>Hyderabad Metro Map</h2>
+            <div className='magnify text-center'> 
+               <div className='magnified'>
+                   <img src={mapimg} className="d-block w-75" alt=''></img>
+               </div>
+            </div>
+        </div>
+        </>
     );
 }
 
