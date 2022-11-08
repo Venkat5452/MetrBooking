@@ -8,6 +8,8 @@ import { toDataURL } from 'qrcode';
 import jsPDF from 'jspdf';
 import hydemetro from '../images/img2.png';
 import moment from 'moment/moment';
+import displayrazorpay from '../utils/paymentgateway';
+
 
 //import { Document, Page, pdfjs } from "react-pdf";
 function Loggedin() {
@@ -16,11 +18,12 @@ function Loggedin() {
     const [valFrom, setValFrom] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [pay,setpay]=useState(false);
     const [img1, setIMG]=useState("");
     const Stations = [
       "Raidurg", "Ameerpet", "Rasoolpura", "Parade Ground","Tarnaka","Nagole","Miyapur","Kukatpally","Nampally","MGBS","L.B.Nagar","JBS Parade Ground","Gandhi Hospital"];
     const handleLogout = async () => {
-     // setQr("");
+     setpay(false);
       try {
         await logOut();
         navigate("/");
@@ -36,43 +39,35 @@ function Loggedin() {
         setError("Invalid Input");
       }
       else {
-        const date = new Date();
-        //var dd=date.getDay();
-        var date1 = moment();
-        var currentDate = date1.format('DD/MM/YYYY');
-        console.log(currentDate);
-        // var mm=date.getMonth();
-        // if(dd<10) {
-        //   dd="0"+dd;
-        // }
-        // if(mm<10) {
-        //   mm="0"+mm;
-        // }
-        //const day= `${dd}/${mm+1}/${date.getFullYear()}`;
-        const showTime = date.getHours()+':'+ date.getMinutes()+":" + date.getSeconds();
-        const curr=valFrom+"/"+valTo +"/"+ currentDate +"/" + showTime;
-        //setQr(curr);
-        setError("Happy Journey!!");
-        const res=await toDataURL(curr);
-        //console.log(curr);
-        setIMG(res);
+        const data=await displayrazorpay(setpay,user);
+        console.log(data);
+        setError("Payment Successfull"); 
       }
-    }
+      console.log(pay);
+  }
+  const generateQr=async(e)=>{
+    setpay(false);
+    e.preventDefault();
+    console.log(pay);
+    if(pay) {
+      const date = new Date();
+      var date1 = moment();
+      var currentDate = date1.format('DD/MM/YYYY');
+      const showTime = date.getHours()+':'+ date.getMinutes()+":" + date.getSeconds();
+      const curr=valFrom+"/"+valTo +"/"+ currentDate +"/" + showTime;
+      setError("Happy Journey!!");
+      const res=await toDataURL(curr);
+      setIMG(res);
+      //console.log(res);
+      }
+      setpay(false);
+  }
     const pdfGenerate=()=>{
-      //const date = new Date();
-        //var dd=date.getDay();
-        //var mm=date.getMonth();
+      setpay(false);
+      console.log(pay);
         var date1 = moment();
         var currentDate = date1.format('DD/MM/YYYY');
-        console.log(currentDate);
-        // if(dd<10) {
-        //   dd="0"+dd;
-        // }
-        // if(mm<10) {
-        //   mm="0"+mm;
-        // }
-        // console.log(dd);
-        //const day= `${dd}/${mm+1}/${date.getFullYear()}`;
+        //console.log(currentDate);
          var doc=new jsPDF('landscape','px','a5','false');
          doc.addImage(hydemetro,'PNG',10,10,70,70);
          doc.setTextColor("Blue");
@@ -94,6 +89,11 @@ function Loggedin() {
          doc.setFontSize(25);
          doc.text(165,275,"Happy Journey");
          doc.save('QR.pdf');
+         setIMG("")
+         setpay(false);
+         setValTo("");
+         setValFrom("");
+         navigate("/Loggedin");
     }
     return (
       <>
@@ -102,7 +102,7 @@ function Loggedin() {
           {user && user.email}
       </div>    
       <div className='pp1 box gap-4 mt-4 '>
-      {!img1 && (<div>  <h4 className='p-4 '>Book Metro QR Ticket</h4>
+      {!img1 && !pay && (<div>  <h4 className='p-4 '>Book Metro QR Ticket</h4>
         {error==="Invalid Input" && <Alert variant="danger">{error}</Alert>}
         {/* {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error}</Alert>} */}
          <div className='box p-3 d-flex'>
@@ -141,9 +141,13 @@ function Loggedin() {
          <option value="13">Gandhi Hospital</option>
        </select>
       </div>
-      <div className='pt-3 pb-3 b1 d-flex'>
+      {<div className='pt-3 pb-3 b1 d-flex'>
         <Button type='submit' onClick={handleSubmit}>Submit</Button>
-      </div>  </div> )}
+      </div>}  </div> )}
+      { pay && <div className='text-center p-3'>
+      {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error}</Alert>} 
+        <Button type='submit' onClick={generateQr}>Generate Ticket</Button>
+      </div>} 
       {
         img1 && (
           <div className='text-center'>

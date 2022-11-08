@@ -7,6 +7,7 @@ import 'react-phone-number-input/style.css';
 import PhoneInput from "react-phone-number-input";
 
 
+
 function PhoneSignUp() {
     const [number,setNumber]=useState("");
     const [error, setError] = useState("");
@@ -15,6 +16,7 @@ function PhoneSignUp() {
     const [flag,setFlag]=useState(false);
     const [confirmObj,setConfirmObj]=useState("");
     const navigate=useNavigate();
+    
     const getOtp = async(e) => {
         e.preventDefault();
         setError("");
