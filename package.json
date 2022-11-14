@@ -18,9 +18,11 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "fast-two-sms": "^3.0.0",
     "firebase": "^9.11.0",
     "js-image-zoom": "^0.7.0",
     "jspdf": "^2.5.1",
+    "libphonenumber-js": "^1.10.14",
     "mdb-react-ui-kit": "^5.0.0",
     "moment": "^2.29.4",
     "mongoose": "^6.7.1",
@@ -38,7 +40,7 @@
     "react-icons": "^4.6.0",
     "react-image-zoom": "^1.3.1",
     "react-pdf": "^5.7.2",
-    "react-phone-number-input": "^3.2.11",
+    "react-phone-number-input": "^3.2.12",
     "react-qr-scanner": "^1.0.0-alpha.11",
     "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
@@ -47,6 +49,8 @@
     "request": "^2.79.0",
     "shortid": "^2.2.16",
     "styled-components": "^5.3.6",
+    "uid": "^2.0.1",
+    "util": "^0.12.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -72,5 +76,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "buffer": "^6.0.3",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
+    "process": "^0.11.10",
+    "react-app-rewired": "^2.2.1",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.0"
   }
 }
