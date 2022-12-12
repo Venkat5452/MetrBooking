@@ -14,6 +14,10 @@ import About from './components/About';
 import Destitest from './components/Destitest';
 import Boardtest from './components/Boardtest';
 import { useEffect } from 'react';
+import UpdateCost from './components/UpdateCost';
+import FAQ from './components/FAQ';
+import Services from './components/Services';
+import CommitMent from './components/CommitMent';
 function App() {
   const loadScript=(src)=>{
     return new Promise((resolve)=>{
@@ -51,13 +55,18 @@ function App() {
         <Col>
         <UserAuthContextProvider>
           <Routes>
+            {/* //<Route path="/UpdateCost" element={<RealtimeData/>}/> */}
             <Route path="/" element={<Home/>}/>
             <Route path="/Login" element={<Login/>}/>
+            <Route path="/UpdateCost" element={<UpdateCost/>}/>
             <Route path='/Signup' element={<Signup/>}/>
             <Route path='/About' element={<About/>}/>
             <Route path='/Destitest' element={<Destitest/>}/>
             <Route path='/Boardtest' element={<Boardtest/>}/>
             <Route path='/PhoneSignUp' element={<PhoneSignUp/>}/>
+            <Route path='/FAQ' element={<FAQ/>}/>
+            <Route path='/Commitment' element={<CommitMent/>}/>
+            <Route path='/services' element={<Services/>}/>
             <Route path='/Loggedin' element={<ProtectedRoute><Loggedin/></ProtectedRoute>}/>
           </Routes>
         </UserAuthContextProvider> 

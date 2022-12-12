@@ -12,13 +12,13 @@ function Footer() {
 						<h6>Hyderabad Metro</h6>
 						<ul>
                             <li>
-								<a id="GFG" href="#1">FAQ</a>
+								<a id="GFG" href="/FAQ" >FAQ</a>
 							</li>
 							<li>
-								<a id="GFG" href="#1">Our services</a>
+								<a id="GFG" href="/services">Our services</a>
 							</li>
 							<li>
-								<a id="GFG" href="#1">Privacy policy</a>
+								<a id="GFG" href="/CommitMent">Our Commitment</a>
 							</li>
 						</ul>
 					</div>

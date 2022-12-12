@@ -10,8 +10,10 @@ import jsPDF from 'jspdf';
 import hydemetro from '../images/img2.png';
 import moment from 'moment/moment';
 import img2 from '../images/img2.png';
-import PhoneInput from 'react-phone-number-input';
+//import PhoneInput from 'react-phone-number-input';
 import { db } from '../Firebase';
+//import ReactWhatsapp from 'react-whatsapp';
+
 
 //import displayrazorpay from '../utils/paymentgateway';
 
@@ -19,13 +21,14 @@ import { db } from '../Firebase';
 
 function Loggedin() {
     const { logOut, user } = useUserAuth();
-    const [number,setNumber]=useState("");
+    //const [number,setNumber]=useState("");
     const [valTo, setValTo] = useState("");
     const [valFrom, setValFrom] = useState("");
     const [error, setError] = useState("");
     const [Amt, setAmt] = useState("");
+    //const [base,SetBase]=useState("");
     const [flagc,setflagc]=useState("");
-    const [sendflag,setsendflag]=useState(false);
+    //const [sendflag,setsendflag]=useState(false);
     const navigate = useNavigate();
     const [pay,setpay]=useState(false);
     const [img1, setIMG]=useState("");
@@ -40,52 +43,80 @@ function Loggedin() {
         console.log(error.message);
       }
     };
-    const sendPDF=async(e)=>{
-      e.preventDefault();
-      setError("");
-      setsendflag(true);
-    }
+    // const sendPDF=async(e)=>{
+    //   e.preventDefault();
+    //   setError("");
+    //   setsendflag(true);
+    //   var date1 = moment();
+    //     var currentDate = date1.format('DD/MM/YYYY');
+    //     //console.log(currentDate);
+    //      var doc=new jsPDF('landscape','px','a5','false');
+    //      doc.addImage(hydemetro,'PNG',10,10,70,70);
+    //      doc.setTextColor("Blue");
+    //      doc.setFontSize(24);
+    //      doc.text(145,20,"Hyderabad Metro Ticket");
+    //      doc.setFontSize(12);
+    //      doc.setTextColor("Black");
+    //      doc.text(120,45,"Station From");
+    //      doc.text(195,45,"--");
+    //      doc.text(210,45,Stations[valFrom - 1]);
+    //      doc.text(120,75,"Station To");
+    //      doc.text(195,75,"--");
+    //      doc.text(210,75,Stations[valTo - 1]);
+    //      doc.text(120,105,"Valid Till");
+    //      doc.text(195,105,"--");
+    //      doc.text(210,105,currentDate + " ,11:45 pm ");
+    //      doc.addImage(img1,'PNG',160,115,125,125);
+    //      doc.setTextColor("Green");
+    //      doc.setFontSize(25);
+    //      doc.text(165,275,"Happy Journey");
+    //      SetBase(doc.output('datauri'))
+    //      console.log(base);
+    //      console.log(doc);
+    // }
 
-    const sendpdf2=async(e)=>{
-      e.preventDefault();
-      setError("");
-      if(number==="") {
-        setError("Invalid Input");
-      }
-      else {
-        var date1 = moment();
-        var currentDate = date1.format('DD/MM/YYYY');
-        //console.log(currentDate);
-         var doc=new jsPDF('landscape','px','a5','false');
-         doc.addImage(hydemetro,'PNG',10,10,70,70);
-         doc.setTextColor("Blue");
-         doc.setFontSize(24);
-         doc.text(145,20,"Hyderabad Metro Ticket");
-         doc.setFontSize(12);
-         doc.setTextColor("Black");
-         doc.text(120,45,"Station From");
-         doc.text(195,45,"--");
-         doc.text(210,45,Stations[valFrom - 1]);
-         doc.text(120,75,"Station To");
-         doc.text(195,75,"--");
-         doc.text(210,75,Stations[valTo - 1]);
-         doc.text(120,105,"Valid Till");
-         doc.text(195,105,"--");
-         doc.text(210,105,currentDate + " ,11:45 pm ");
-         doc.addImage(img1,'PNG',160,115,125,125);
-         doc.setTextColor("Green");
-         doc.setFontSize(25);
-         doc.text(165,275,"Happy Journey");
-         setsendflag(false);
-         console.log(doc);
-         setIMG("")
-         setNumber("");
-         setpay(false);
-         setValTo("");
-         setValFrom("");
-         navigate("/Loggedin");
-      }
-    }
+    // const sendpdf2=async(e)=>{
+    //   e.preventDefault();
+    //   setError("");
+    //   if(number==="") {
+    //     setError("Invalid Input");
+    //   }
+    //   else {
+    //     var date1 = moment();
+    //     var currentDate = date1.format('DD/MM/YYYY');
+    //     //console.log(currentDate);
+    //      var doc=new jsPDF('landscape','px','a5','false');
+    //      doc.addImage(hydemetro,'PNG',10,10,70,70);
+    //      doc.setTextColor("Blue");
+    //      doc.setFontSize(24);
+    //      doc.text(145,20,"Hyderabad Metro Ticket");
+    //      doc.setFontSize(12);
+    //      doc.setTextColor("Black");
+    //      doc.text(120,45,"Station From");
+    //      doc.text(195,45,"--");
+    //      doc.text(210,45,Stations[valFrom - 1]);
+    //      doc.text(120,75,"Station To");
+    //      doc.text(195,75,"--");
+    //      doc.text(210,75,Stations[valTo - 1]);
+    //      doc.text(120,105,"Valid Till");
+    //      doc.text(195,105,"--");
+    //      doc.text(210,105,currentDate + " ,11:45 pm ");
+    //      doc.addImage(img1,'PNG',160,115,125,125);
+    //      doc.setTextColor("Green");
+    //      doc.setFontSize(25);
+    //      doc.text(165,275,"Happy Journey");
+    //      SetBase(doc.output("datauristring"))
+    //      console.log(base);
+    //      setsendflag(false);
+    //      console.log(doc);
+    //      setIMG("")
+    //      setNumber("");
+    //      setpay(false);
+    //      setValTo("");
+    //      setValFrom("");
+    //      navigate("/Loggedin");
+    //   }
+    // }
     const handleSubmit=async(e)=>{
       e.preventDefault();
       setError("");
@@ -103,13 +134,10 @@ function Loggedin() {
           const k= response.docs.map(doc => ({
             data:doc.data()
           }))
-          console.log(k);
           try {
             for(var s in k) {
-            console.log(k[s].data);
             if(k[s].data.FromTo===tofrom || k[s].data.FromTo===fromto) {
               setAmt(k[s].data.cost)
-              console.log(k[s].data.cost)
               break;
             }
           }
@@ -136,11 +164,13 @@ function Loggedin() {
       setError("Happy Journey!!");
       const res=await toDataURL(curr);
       setIMG(res);
-      //console.log(res);
       }
       setpay(false);
   }
-    const pdfGenerate=()=>{
+    const pdfGenerate=async(e)=>{
+      console.log(Amt);
+      var money=Amt;
+      e.preventDefault();
       setAmt("");
       setpay(false);
       console.log(pay);
@@ -160,14 +190,20 @@ function Loggedin() {
          doc.text(120,75,"Station To");
          doc.text(195,75,"--");
          doc.text(210,75,Stations[valTo - 1]);
-         doc.text(120,105,"Valid Till");
+         doc.text(120,105,"Amount Paid");
          doc.text(195,105,"--");
-         doc.text(210,105,currentDate + " ,11:45 pm ");
-         doc.addImage(img1,'PNG',160,115,125,125);
+         doc.text(210,105,money + " Rupees Only ");
+         doc.text(120,135,"Valid Till");
+         doc.text(195,135,"--");
+         doc.text(210,135,currentDate + " ,11:45 pm ");
+         doc.addImage(img1,'PNG',160,145,125,125);
          doc.setTextColor("Green");
          doc.setFontSize(25);
-         doc.text(165,275,"Happy Journey");
-         doc.save('QR.pdf');
+         doc.text(165,285,"Happy Journey");
+        //  doc.setTextColor("black");
+        //  doc.setFontSize(10);
+        //  doc.text(325,300,user.phone);
+         doc.save(Stations[valFrom - 1]+" - "+ Stations[valTo - 1] + "Qr");
          setIMG("")
          setpay(false);
          setValTo("");
@@ -269,32 +305,14 @@ function Loggedin() {
         <Button type='submit' onClick={generateQr}>Generate Ticket</Button>
       </div>} 
       {
-        img1 && !sendflag && (
+        img1  && (
           <div className='text-center'>
             <div><h4 className='pt-3'>Download Your Ticket</h4></div>
             {error!=="Invalid Input" && error!=="" && <Alert variant="success">{error}</Alert>} 
             <div><img src={img1} alt="qr"></img></div>
             <div className='m-1 p-1'><Button variant="success" onClick={pdfGenerate}  type="submit" >Download</Button></div>
-            <p>OR</p>
-            <div className='m-3'><Button variant="primary" >Booked For Others ?</Button></div>
-          </div>
-          //<a href={img1}   download= "qr.pdf"></a>
-        )
-      }
-      {
-        img1 && sendflag && (
-          <div className='text-center m-2'>
-            <div><h4 className='p-2 m-2'>Enter Phone Number</h4></div>
-            {error==="Invalid Input" && error!=="" && <Alert  variant="danger">{error}</Alert>} 
-            <div>
-            <PhoneInput
-              defaultCountry="IN"
-              //value={number}
-              color="blue"
-              onChange={setNumber}
-              placeholder="Enter Phone Number"
-            /></div>
-            <div className='m-2 p-2'><Button variant="success" onClick={sendpdf2}  >Send Ticket</Button></div>
+            {/* <p>OR</p> */}
+            {/* <div className='m-3'><Button variant="primary" onClick={sendPDF}>Booked For Others ?</Button></div> */}
           </div>
           //<a href={img1}   download= "qr.pdf"></a>
         )
