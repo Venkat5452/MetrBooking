@@ -203,7 +203,7 @@ function Loggedin() {
         //  doc.setTextColor("black");
         //  doc.setFontSize(10);
         //  doc.text(325,300,user.phone);
-         doc.save(Stations[valFrom - 1]+" - "+ Stations[valTo - 1] + "Qr");
+         doc.save(Stations[valFrom - 1]+" - "+ Stations[valTo - 1] + "Qr.pdf" );
          setIMG("")
          setpay(false);
          setValTo("");
