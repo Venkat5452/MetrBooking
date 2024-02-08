@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import './Home.css';
 import mapimg from '../images/HYD-MAP.jpg'
-
+import hyd2 from '../images/MyMetro.jpg'
+import hyd3 from '../images/MyMetro1.jpg'
+import hyd1 from '../images/hyd3.jpg'
 
 
 function Home() {
@@ -18,7 +20,7 @@ function Home() {
             <Carousel.Item>
                 <img
                     className="d-block w-100 ss"
-                    src="https://www.ltmetro.com/wp-content/uploads/2020/06/Hyderabad-Metro-Rail-Honourable-Prime-Minister-Narendra-Modi-Flags-off-on-28th-November-2017-2.jpg"
+                    src={hyd1}
                     alt="First slide"
                 />
                 <Carousel.Caption>
@@ -29,19 +31,19 @@ function Home() {
             <Carousel.Item>
                 <img
                     className="d-block w-100 ss"
-                    src="https://www.ltmetro.com/wp-content/uploads/2018/10/EvolutionofaMetroStation-StageEight.jpg"
+                    src={hyd3}
                     alt="Second slide"
                 />
 
                 <Carousel.Caption>
-                    <h3>Construction Of Station</h3>
+                    <h3>Metro Station</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
                 <img
                     className="d-block w-100 ss"
-                    src="https://www.ltmetro.com/wp-content/uploads/2021/02/1612516346320.jpg"
+                    src={hyd2}
                     alt="Third slide"
                 />
 

@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import './Header.css';
+import IMG1 from '../images/img2.png'
 //x0e5GSKDeyVrNQcr0gJ7pOmP Secret_key
 //rzp_test_Rg7Lgz7NgVAUCu key_ID
 function Header() {
@@ -11,10 +12,10 @@ function Header() {
       <Container className="text-primary">
         <Navbar.Brand href="/">
           <img
-            src="https://www.ltmetro.com/wp-content/uploads/2020/06/sticky_logo-1-1-1.png"
-            width="200"
-            height="85"
-            className="d-inline-block align-top"
+            src={IMG1}
+            width="100"
+            height="90"
+            className="d-inline-block align-top rounded rounded-5"
             alt="React Bootstrap logo"
           /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" id="navbar-toggler" />
